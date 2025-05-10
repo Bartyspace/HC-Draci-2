@@ -10,44 +10,6 @@ import Contact from "../components/Contact.astro";
 const { title = "HC Draci" } = Astro.props;
 ---
 
-<!doctype html>
-<html lang="cs">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{title} - Oficiální stránky</title>
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <style>
-      .hero-bg {
-        background-color: #0d21a1;
-        background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-      }
-
-      .nav-link {
-        position: relative;
-      }
-
-      .nav-link::after {
-        content: "";
-        position: absolute;
-        width: 0;
-        height: 2px;
-        bottom: -2px;
-        left: 0;
-        background-color: #db0000;
-        transition: width 0.3s ease;
-      }
-
-      .nav-link:hover::after {
-        width: 100%;
-      }
-
-      .active-nav::after {
-        width: 100%;
-      }
-    </style>
-  </head>
-  <body class="bg-gray-50">
     <MainLayout title="HC Draci">
       <Hero />
       <News />
@@ -57,24 +19,3 @@ const { title = "HC Draci" } = Astro.props;
       <Sponsors />
       <Contact />
     </MainLayout>
-    <script>
-      // Smooth scroll pro odkazy
-      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener("click", function (this: HTMLAnchorElement, e) {
-          e.preventDefault();
-
-          const targetId = this.getAttribute("href");
-          if (targetId === "#") return;
-
-          const targetElement = targetId ? document.querySelector(targetId) : null;
-          if (targetElement instanceof HTMLElement) {
-            window.scrollTo({
-              top: targetElement.offsetTop - 80,
-              behavior: "smooth",
-            });
-          }
-        });
-      });
-    </script>
-  </body>
-</html>

@@ -1,14 +1,14 @@
 ---
 // Můžete zde definovat proměnné nebo importovat data
 const galleryItems = [
-    { color: '#0d21a1' },
-    { color: '#db0000' },
-    { color: '#0d21a1' },
-    { color: '#db0000' },
-    { color: '#db0000' },
-    { color: '#0d21a1' },
-    { color: '#0d21a1' },
-    { color: '#db0000' }
+    { color: 'bg-blue-900' },
+    { color: 'bg-red-600' },
+    { color: 'bg-blue-900' },
+    { color: 'bg-red-600' },
+    { color: 'bg-red-600' },
+    { color: 'bg-blue-900' },
+    { color: 'bg-blue-900' },
+    { color: 'bg-red-600' }
 ];
 ---
 
@@ -17,8 +17,8 @@ const galleryItems = [
         <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Galerie</h2>
         
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {galleryItems.map((item, index) => (
-                <div class={`bg-[${item.color}] h-64 rounded-lg overflow-hidden relative hover:opacity-90 transition duration-300`}>
+            {galleryItems.map((item) => (
+                <div class={`${item.color} h-64 rounded-lg overflow-hidden relative hover:opacity-90 transition duration-300`}>
                     <div class="absolute inset-0 flex items-center justify-center">
                         <svg class="w-16 h-16 text-white opacity-50" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd"></path>

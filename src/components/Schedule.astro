@@ -1,0 +1,86 @@
+---
+// Můžete zde definovat proměnné nebo importovat data
+const matches = [
+    {
+        date: '25.11.2023',
+        time: '18:00',
+        home: 'HC Draci',
+        away: 'HC Vlci',
+        venue: 'Zimní stadion',
+        result: '-'
+    },
+    {
+        date: '02.12.2023',
+        time: '17:30',
+        home: 'HC Medvědi',
+        away: 'HC Draci',
+        venue: 'Městská hala',
+        result: '-'
+    },
+    {
+        date: '09.12.2023',
+        time: '19:00',
+        home: 'HC Draci',
+        away: 'HC Orli',
+        venue: 'Zimní stadion',
+        result: '-'
+    },
+    {
+        date: '16.12.2023',
+        time: '18:00',
+        home: 'HC Tygři',
+        away: 'HC Draci',
+        venue: 'Sportovní hala',
+        result: '-'
+    },
+    {
+        date: '23.12.2023',
+        time: '17:00',
+        home: 'HC Draci',
+        away: 'HC Lvi',
+        venue: 'Zimní stadion',
+        result: '-'
+    }
+];
+---
+
+<section id="schedule" class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Rozpis zápasů</h2>
+        
+        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead>
+                        <tr class="bg-blue-900 text-white">
+                            <th class="py-3 px-4 text-left">Datum</th>
+                            <th class="py-3 px-4 text-left">Čas</th>
+                            <th class="py-3 px-4 text-left">Domácí</th>
+                            <th class="py-3 px-4 text-left">Hosté</th>
+                            <th class="py-3 px-4 text-left">Místo</th>
+                            <th class="py-3 px-4 text-left">Výsledek</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {matches.map((match, index) => (
+                            <tr class="hover:bg-gray-100 transition duration-200">
+                                <td class={`py-3 px-4 ${index < matches.length - 1 ? 'border-b' : ''}`}>{match.date}</td>
+                                <td class={`py-3 px-4 ${index < matches.length - 1 ? 'border-b' : ''}`}>{match.time}</td>
+                                <td class={`py-3 px-4 ${index < matches.length - 1 ? 'border-b' : ''} ${match.home === 'HC Draci' ? 'font-medium' : ''}`}>{match.home}</td>
+                                <td class={`py-3 px-4 ${index < matches.length - 1 ? 'border-b' : ''} ${match.away === 'HC Draci' ? 'font-medium' : ''}`}>{match.away}</td>
+                                <td class={`py-3 px-4 ${index < matches.length - 1 ? 'border-b' : ''}`}>{match.venue}</td>
+                                <td class={`py-3 px-4 ${index < matches.length - 1 ? 'border-b' : ''}`}>{match.result}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <div class="text-center mt-10">
+            <a href="#" class="inline-block bg-blue-900 hover:bg-blue-800 text-white font-medium py-2 px-6 rounded-full transition duration-300">
+                Kompletní rozpis
+            </a>
+        </div>
+    </div>
+</section>

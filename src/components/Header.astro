@@ -1,0 +1,67 @@
+---
+// Můžete zde definovat proměnné nebo importovat data
+---
+
+<header class="sticky top-0 z-50 bg-white shadow-md">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+        <div class="flex items-center space-x-2">
+            <div class="text-blue-900 font-bold text-3xl">
+                <svg class="w-10 h-10 inline-block" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M50 10C27.909 10 10 27.909 10 50C10 72.091 27.909 90 50 90C72.091 90 90 72.091 90 50C90 27.909 72.091 10 50 10Z" fill="#0d21a1"/>
+                    <path d="M65 30H35C32.791 30 31 31.791 31 34V66C31 68.209 32.791 70 35 70H65C67.209 70 69 68.209 69 66V34C69 31.791 67.209 30 65 30Z" fill="#db0000"/>
+                    <path d="M50 25L55 35H45L50 25Z" fill="#ffffff"/>
+                    <path d="M50 75L55 65H45L50 75Z" fill="#ffffff"/>
+                    <path d="M25 50L35 55V45L25 50Z" fill="#ffffff"/>
+                    <path d="M75 50L65 55V45L75 50Z" fill="#ffffff"/>
+                </svg>
+                <span>HC Draci</span>
+            </div>
+        </div>
+        
+        <nav class="hidden md:flex space-x-8">
+            <a href="#" class="nav-link active-nav text-gray-800 font-medium">Domů</a>
+            <a href="#news" class="nav-link text-gray-800 font-medium">Novinky</a>
+            <a href="#team" class="nav-link text-gray-800 font-medium">Tým</a>
+            <a href="#schedule" class="nav-link text-gray-800 font-medium">Rozpis zápasů</a>
+            <a href="#gallery" class="nav-link text-gray-800 font-medium">Galerie</a>
+            <a href="#contact" class="nav-link text-gray-800 font-medium">Kontakt</a>
+        </nav>
+        
+        <div class="md:hidden">
+            <button id="mobile-menu-button" class="text-gray-800">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+    
+    <!-- Mobilní menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+        <div class="container mx-auto px-4 py-2 flex flex-col space-y-3">
+            <a href="#" class="text-gray-800 font-medium py-2 border-b border-gray-100">Domů</a>
+            <a href="#news" class="text-gray-800 font-medium py-2 border-b border-gray-100">Novinky</a>
+            <a href="#team" class="text-gray-800 font-medium py-2 border-b border-gray-100">Tým</a>
+            <a href="#schedule" class="text-gray-800 font-medium py-2 border-b border-gray-100">Rozpis zápasů</a>
+            <a href="#gallery" class="text-gray-800 font-medium py-2 border-b border-gray-100">Galerie</a>
+            <a href="#contact" class="text-gray-800 font-medium py-2">Kontakt</a>
+        </div>
+    </div>
+</header>
+
+<script>
+    // Mobilní menu
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    mobileMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+    
+    // Zavřít mobilní menu po kliknutí na odkaz
+    document.querySelectorAll('#mobile-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+        });
+    });
+</script>

@@ -1,0 +1,18 @@
+---
+// Můžete zde definovat proměnné nebo importovat data
+const sponsors = [1, 2, 3, 4, 5]; // Placeholder pro sponzory
+---
+
+<section class="py-12 bg-gray-50">
+    <div class="container mx-auto px-4">
+        <h2 class="text-2xl font-bold text-center mb-8 text-gray-800">Naši partneři</h2>
+        
+        <div class="flex flex-wrap justify-center items-center gap-8">
+            {sponsors.map(() => (
+                <div class="w-32 h-32 bg-white rounded-lg shadow-md flex items-center justify-center p-4">
+                    <div class="text-gray-400 font-bold text-lg">LOGO</div>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>

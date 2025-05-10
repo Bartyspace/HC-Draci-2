@@ -1,0 +1,43 @@
+---
+// Můžete zde definovat proměnné nebo importovat data
+const quickLinks = [
+    { name: 'Domů', url: '#' },
+    { name: 'Novinky', url: '#news' },
+    { name: 'Tým', url: '#team' },
+    { name: 'Rozpis zápasů', url: '#schedule' },
+    { name: 'Galerie', url: '#gallery' },
+    { name: 'Kontakt', url: '#contact' }
+];
+---
+
+<footer class="bg-blue-900 text-white py-10">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+                <h3 class="text-xl font-bold mb-4">HC Draci</h3>
+                <p class="text-gray-300 mb-4">Oficiální stránky hokejového klubu HC Draci. Sledujte naše zápasy, novinky a aktuální dění v klubu.</p>
+                <p class="text-gray-300">&copy; {new Date().getFullYear()} HC Draci. Všechna práva vyhrazena.</p>
+            </div>
+            
+            <div>
+                <h3 class="text-xl font-bold mb-4">Rychlé odkazy</h3>
+                <ul class="space-y-2">
+                    {quickLinks.map(link => (
+                        <li><a href={link.url} class="text-gray-300 hover:text-white transition duration-300">{link.name}</a></li>
+                    ))}
+                </ul>
+            </div>
+            
+            <div>
+                <h3 class="text-xl font-bold mb-4">Odběr novinek</h3>
+                <p class="text-gray-300 mb-4">Přihlaste se k odběru novinek a buďte vždy informováni o dění v klubu.</p>
+                <form class="flex">
+                    <input type="email" placeholder="Váš email" class="px-4 py-2 rounded-l-lg focus:outline-none flex-grow">
+                    <button type="submit" class="bg-red-600 hover:bg-red-700 text-white font-medium py-2 px-4 rounded-r-lg transition duration-300">
+                        Odebírat
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</footer>

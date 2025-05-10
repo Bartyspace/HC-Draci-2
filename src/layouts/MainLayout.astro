@@ -1,19 +1,100 @@
 ---
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import { SEO } from "astro-seo";
+import { Head } from "astro-capo";
+import siteConfig from "../types/site";
 import "../styles/global.css";
 
-const { title = "HC Draci" } = Astro.props;
+export interface Props {
+  title?: string | undefined;
+  description?: string | undefined;
+  openGraphImage?:
+    | { src: string; alt: string; width?: number; height?: number }
+    | undefined;
+  color?: string;
+}
+
+const { title, description, openGraphImage } = Astro.props;
+
+const { pathname } = Astro.url;
+
+const {
+  name: siteName,
+  description: siteDescription,
+  url: siteUrl,
+} = siteConfig;
+
+const canonical = `${siteUrl}${pathname}`;
 ---
 
-<!doctype html>
+---
+
 <html lang="cs">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{title} - Oficiální stránky</title>
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  </head>
+  <Head>
+    <SEO
+      charset="UTF-8"
+      title={title!}
+      titleTemplate={`${siteName} - %s`}
+      description={description ?? siteDescription}
+      canonical={canonical}
+      openGraph={{
+        basic: {
+          title: siteName,
+          type: "website",
+          url: canonical,
+          image: openGraphImage?.src ?? "/BartyspaceScreen.png",
+        },
+        optional: {
+          description: description ?? siteDescription,
+          siteName: siteName,
+        },
+        image: {
+          alt: openGraphImage?.alt ?? siteName,
+          width: openGraphImage?.width ?? 1200,
+          height: openGraphImage?.height ?? 630,
+        },
+      }}
+      twitter={{
+        card: "summary_large_image",
+        title: siteName,
+        description: description ?? siteDescription,
+        site: "https://twitter.com/yoBartys",
+        image: "/android-chrome-512x512.png",
+      }}
+      extend={{
+        link: [
+          { rel: "sitemap", href: "/sitemap-index.xml" },
+          {
+            rel: "apple-touch-icon",
+            sizes: "180x180",
+            href: "/apple-touch-icon.png",
+          },
+          {
+            rel: "icon",
+            type: "image/png",
+            sizes: "32x32",
+            href: "/favicon-32x32.png",
+          },
+          {
+            rel: "icon",
+            type: "image/png",
+            sizes: "16x16",
+            href: "/favicon-16x16.png",
+          },
+          { rel: "manifest", href: "/site.webmanifest" },
+          { rel: "mask-icon", href: "/safari-pinned-tab.svg" },
+        ],
+        meta: [
+          { name: "viewport", content: "width=device-width" },
+          { name: "robots", content: "index" },
+          { name: "generator", content: Astro.generator },
+          { name: "msapplication-TileColor", content: "#da532c" },
+          { name: "theme-color", content: "ffffff" },
+        ],
+      }}
+    />
+  </Head>
   <body class="bg-gray-50">
     <Header />
 
@@ -22,7 +103,6 @@ const { title = "HC Draci" } = Astro.props;
     </main>
 
     <Footer />
-
     <script>
       // Smooth scroll pro odkazy
       document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
